@@ -3,6 +3,7 @@ import json
 import sys
 import os
 
+#change the postion of json file according to the path mentioned below.
 data=json.load(open("D:\python project\data.json","r"))
 
 #MAIN EXECUTION
