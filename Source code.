@@ -1,0 +1,56 @@
+from tkinter import *
+import json
+import sys
+import os
+
+data=json.load(open("D:\python project\data.json","r"))
+
+#MAIN EXECUTION
+def meaning():
+    m1=word.get()
+    m1=m1.lower()
+    if (m1 in data):
+        yo=data[m1]
+        t1.insert(END,yo)
+    else:
+        yo1="This word does not exist"
+        t1.insert(END,yo1)
+        
+#RESET BUTTON
+def reset():
+    word.set("")
+    t1.delete(1.0,END)
+    
+
+#EXIT BUTTON
+def exit():
+    window.destroy()
+
+
+window=Tk()
+window.title("Python Dictionary")
+f=Frame(window)
+a=Label(f,text="Dictionary").grid(row=0,sticky=W,column=0)
+f.grid()
+b=Label(window,text="Enter Word")
+word=StringVar()
+b.grid(column=0)
+e1=Entry(window,textvariable=word)
+e1.grid(row=2,column=0)
+b1=Button(window,text="GO!",command=meaning)
+b1.grid()
+frame=Frame(window)
+t1=Text(frame,height=5,width=50)
+t1.grid()
+frame.grid(column=0,row=4)
+#f1=Frame(window)
+b2=Button(window,text="Reset",command=reset)
+b2.grid(row=5,column=0)
+#f1.grid()
+f2=Frame(window)
+b3=Button(f2,text="Exit",command=exit)
+b3.grid(row=5)
+f2.grid(column=1)
+#f2.grid(column=0)
+
+window.mainloop()
